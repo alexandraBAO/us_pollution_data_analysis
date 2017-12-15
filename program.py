@@ -16,7 +16,7 @@ f=open("pollution_us_2000_2016.csv")
 for i in range(N):
   line=f.next().strip().split(',')
   if (i > 0):
-    results.append(MyClass(line[5], line[6], line[7], line[8], line[9], line[15], line[21], line[27]))
+    results.append(MyClass(line[5], line[6], line[7], line[8], line[10], line[15], line[20], line[25]))
 f.close()
 
-print results[3].county
+print results[3].no2Mean
