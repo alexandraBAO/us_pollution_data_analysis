@@ -15,14 +15,15 @@ class MyClass:
 
 results = []
 
-data = pd.read_csv('pollution_us_2000_2016.csv', nrows=40)
+data = pd.read_csv('pollution_us_2000_2016.csv')
 
 data['date'] = data['Date Local'].apply(dateutil.parser.parse, dayfirst=True)
 
-lines = data['NO2 Mean'].count()
-no2MeanAverage = data['NO2 Mean'].sum() / lines
+# lines = data['NO2 Mean'].count()
+# no2MeanAverage = data['NO2 Mean'].sum() / lines
+
+test = data.groupby(data['date'].map(lambda x: x.year))[['NO2 Mean']].mean()
+print test
 
 
-
-
-print 'The average consum of NO2 Mean from ' + str(min(data['date'])) + ' to ' + str(max(data['date'])) + ' is: ' + str(no2MeanAverage)
+# print 'The average consum of NO2 Mean from ' + str(min(data['date'])) + ' to ' + str(max(data['date'])) + ' is: ' + str(no2MeanAverage)
