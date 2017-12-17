@@ -25,8 +25,4 @@ no2MeanAverage = data['NO2 Mean'].sum() / lines
 
 
 
-# data.groupby(['month']).groups.keys()
-print data.groupby(['month']).groups.keys()
-
-
-# print 'The average consum of NO2 Mean from ' + str(min(data['date'])) + ' to ' + str(max(data['date'])) + ' is: ' + str(no2MeanAverage)
+print 'The average consum of NO2 Mean from ' + str(min(data['date'])) + ' to ' + str(max(data['date'])) + ' is: ' + str(no2MeanAverage)
