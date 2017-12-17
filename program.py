@@ -15,7 +15,7 @@ class MyClass:
 
 results = []
 
-data = pd.read_csv('pollution_us_2000_2016.csv')
+data = pd.read_csv('pollution_us_2000_2016.csv', nrows=20)
 
 data['date'] = data['Date Local'].apply(dateutil.parser.parse, dayfirst=True)
 
