@@ -1,3 +1,7 @@
+import pandas as pd
+import dateutil
+import datetime
+
 class MyClass:
   def __init__(self, state, county, city, dateLocal, no2Mean, o3Mean, so2Mean, coMean):
     self.state = state
@@ -11,12 +15,18 @@ class MyClass:
 
 results = []
 
-N=5
-f=open("pollution_us_2000_2016.csv")
-for i in range(N):
-  line=f.next().strip().split(',')
-  if (i > 0):
-    results.append(MyClass(line[5], line[6], line[7], line[8], line[9], line[15], line[21], line[27]))
-f.close()
+data = pd.read_csv('pollution_us_2000_2016.csv', nrows=40)
 
-print results[3].county
+data['date'] = data['Date Local'].apply(dateutil.parser.parse, dayfirst=True)
+
+lines = data['NO2 Mean'].count()
+no2MeanAverage = data['NO2 Mean'].sum() / lines
+
+
+
+
+# data.groupby(['month']).groups.keys()
+print data.groupby(['month']).groups.keys()
+
+
+# print 'The average consum of NO2 Mean from ' + str(min(data['date'])) + ' to ' + str(max(data['date'])) + ' is: ' + str(no2MeanAverage)
